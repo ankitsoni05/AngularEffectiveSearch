@@ -1,0 +1,13 @@
+<div *ngIf="filteredProducts">
+    <p>Total Products Found :- {{filteredProducts.totalProducts}}</p>
+</div>
+
+<mat-form-field appearance="outline">
+    <mat-label>Search Products</mat-label>
+    <input matInput [formControl]="searchControl" [matAutocomplete]="auto">
+    <mat-autocomplete #auto="matAutocomplete">
+        <mat-option *ngFor="let product of filteredProducts?.foundProducts" [value]="product.productID">
+            {{ product.name }} - {{product.productNumber}}
+        </mat-option>
+    </mat-autocomplete>
+</mat-form-field>
